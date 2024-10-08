@@ -2,16 +2,30 @@
 
 ## Introduction
 
-A **string** is a sequence of characters, typically used to represent text. In C, strings are represented as arrays of characters terminated by a null character (`\0`).
+Strings are sequences of characters, commonly used to represent and manipulate text. In C, strings are arrays of characters terminated by a null character (`\0`). This folder contains various examples of string manipulation, searching, and advanced string algorithms with interactive programs to engage users in learning.
 
-## Purpose and Usage
+## Contents
 
--   Strings are used to handle text and character-based operations.
--   Common operations include concatenation, comparison, searching for substrings, and reversing.
--   Strings play a crucial role in many real-world problems like pattern matching, parsing, and validation.
+### 1. **Basic String Manipulations**
 
-## Implementations
+This subfolder contains interactive examples for:
 
--   Basic string manipulation (concatenation, length calculation, reversing).
--   String searching algorithms (Brute Force, Knuth-Morris-Pratt).
--   Palindrome checking and anagram detection.
+-   **Getting String Length**: Calculate the length of a string.
+-   **Concatenating Strings**: Combine two strings.
+-   **Copying Strings**: Copy one string to another.
+
+### 2. **Searching in Strings**
+
+This subfolder includes:
+
+-   **Substring Search**: Find the first occurrence of a substring within a string.
+
+### 3. **Advanced String Algorithms**
+
+This subfolder provides interactive implementations for:
+
+-   **Palindrome Check**: Check if a string is the same forwards and backwards, ignoring case and non-alphabetic characters.
+-   **Anagram Detection**: Determine if two strings are anagrams (i.e., contain the same characters in different order).
+-   **Knuth-Morris-Pratt (KMP) Algorithm**: Efficient substring search with O(n) complexity.
+-   **Longest Common Subsequence (LCS)**: Find the longest common subsequence between two strings using dynamic programming.
+-   **Z Algorithm**: Pattern matching algorithm to find all occurrences of a pattern in a string with O(n) complexity.
