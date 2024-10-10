@@ -1,8 +1,7 @@
-// Basic Operations in a Singly Linked List (Insertion, Deletion, and Traversal)
+// Comprehensive operations in a singly linked list
 #include <stdio.h>
 #include <stdlib.h>
 
-// Define a structure for a node in the singly linked list
 typedef struct Node {
     int data;
     struct Node* next;
@@ -10,11 +9,11 @@ typedef struct Node {
 
 // Function prototypes
 void displayMenu();
-void displayList(node* node);
-void insertAtHead(node** head_ref, int newData);
-void insertAtTail(node** head_ref, int newData);
-void deleteNode(node** head_ref, int key);
-void reverseList(node** head_ref);
+void insertAtHead(node** head, int newData);
+void insertAtTail(node** head, int newData);
+void deleteNode(node** head, int key);
+void displayList(node* head);
+int lengthOfList(node* head);
 
 int main(void) {
     node* head = NULL;
@@ -29,30 +28,22 @@ int main(void) {
                 printf("Enter value to insert at head: ");
                 scanf("%d", &value);
                 insertAtHead(&head, value);
-                printf("Current list: ");
-                displayList(head);
                 break;
             case 2:
                 printf("Enter value to insert at tail: ");
                 scanf("%d", &value);
                 insertAtTail(&head, value);
-                printf("Current list: ");
-                displayList(head);
                 break;
             case 3:
                 printf("Enter value to delete: ");
                 scanf("%d", &value);
                 deleteNode(&head, value);
-                printf("Current list: ");
-                displayList(head);
                 break;
             case 4:
                 displayList(head);
                 break;
             case 5:
-                reverseList(&head);
-                printf("Current list: ");
-                displayList(head);
+                printf("Length of the list: %d\n", lengthOfList(head));
                 break;
             case 6:
                 printf("Exiting program.\n");
@@ -63,34 +54,23 @@ int main(void) {
     } while (choice != 6);
 }
 
-// Function to display the menu
-void displayMenu() {
-    printf("\n--- Singly Linked List Menu ---\n"
-       "1. Insert at Head\n"
-       "2. Insert at Tail\n"
-       "3. Delete by Value\n"
-       "4. Display List\n"
-       "5. Reverse List\n"
-       "6. Exit\n"
-       "Choose an option: ");
-}
-
-// Function to insert a node at the head
-void insertAtHead(node** head, int newData) {
+void insertAtHead(node** head, int newData) {   
     node* newNode = (node*) malloc(sizeof(node));
+
     newNode->data = newData;
     newNode->next = *head;
     *head = newNode;
+
     printf("%d inserted at head.\n", newData);
 }
 
-// Function to insert a node at the tail
 void insertAtTail(node** head, int newData) {
     node* newNode = (node*) malloc(sizeof(node));
+
     newNode->data = newData;
     newNode->next = NULL;
 
-    if (*head == NULL) { 
+    if (*head == NULL) {
         *head = newNode;
     }
     else {
@@ -101,10 +81,9 @@ void insertAtTail(node** head, int newData) {
         temp->next = newNode;
     }
 
-    printf("%d inserted at tail.\n", newData);
+    printf("%d inserted ad tail.\n", newData);
 }
 
-// Function to delete a node by value
 void deleteNode(node** head, int key) {
     node* temp = *head;
     node* prev = NULL;
@@ -132,16 +111,16 @@ void deleteNode(node** head, int key) {
     // Unlink the node and free the memory
     prev->next = temp->next;
     free(temp);
-
     printf("Node with value %d deleted.\n", key);
 }
 
-// Function to traverse and display the linked list
 void displayList(node* head) {
     if (head == NULL) {
         puts("List is empty.");
         return;
     }
+
+    printf("Linked List: ");
 
     node* temp = head;
     while (temp != NULL) {
@@ -151,18 +130,25 @@ void displayList(node* head) {
     puts("NULL");
 }
 
-// Function to reverse the linked list
-void reverseList(node** head) {
-    node* prev = NULL;
-    node* curr = *head;
-    node* next = NULL;
+int lengthOfList(node* head) {
+    int length = 0;
+    node* temp = head;
 
-    while (curr != NULL) {
-        next = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = next;
+    while (temp != NULL) {
+        length++;
+        temp = temp->next;
     }
 
-    *head = prev;
+    return length;
+}
+
+void displayMenu() {
+    printf("\n--- Singly Linked List Menu ---\n");
+    printf("1. Insert at Head\n");
+    printf("2. Insert at Tail\n");
+    printf("3. Delete by Value\n");
+    printf("4. Display List\n");
+    printf("5. Length of List\n");
+    printf("6. Exit\n");
+    printf("Choose an option: ");
 }
