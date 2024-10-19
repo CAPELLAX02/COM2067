@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void matrisCarp(int **A, int **B, int **C, int n, int m, int p) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < p; j++) {
+            C[i][j] = 0;
+            for (int k = 0; k < m; k++) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+}
+
+int main() {
+    int n = 2, m = 3, p = 2;  // A: 2x3, B: 3x2 boyutlarinda örnek
+    int **A, **B, **C;
+
+    // Matris A için bellek ayirma
+    A = (int **)malloc(n * sizeof(int *));
+    for (int i = 0; i < n; i++) {
+        A[i] = (int *)malloc(m * sizeof(int));
+    }
+
+    // Matris B için bellek ayirma
+    B = (int **)malloc(m * sizeof(int *));
+    for (int i = 0; i < m; i++) {
+        B[i] = (int *)malloc(p * sizeof(int));
+    }
+
+    // Matris C için bellek ayirma
+    C = (int **)malloc(n * sizeof(int *));
+    for (int i = 0; i < n; i++) {
+        C[i] = (int *)malloc(p * sizeof(int));
+    }
+
+    // Matris A'yi doldur
+    A[0][0] = 1; A[0][1] = 2; A[0][2] = 3;
+    A[1][0] = 4; A[1][1] = 5; A[1][2] = 6;
+
+    // Matris B'yi doldur
+    B[0][0] = 7; B[0][1] = 8;
+    B[1][0] = 9; B[1][1] = 10;
+    B[2][0] = 11; B[2][1] = 12;
+
+    // Matrisleri çarp
+    matrisCarp(A, B, C, n, m, p);
+
+    // Sonucu yazdir
+    printf("Sonuc matrisi:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < p; j++) {
+            printf("%d ", C[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Bellegi temizle
+    for (int i = 0; i < n; i++) free(A[i]);
+    for (int i = 0; i < m; i++) free(B[i]);
+    for (int i = 0; i < n; i++) free(C[i]);
+
+    free(A);
+    free(B);
+    free(C);
+
+    return 0;
+}
