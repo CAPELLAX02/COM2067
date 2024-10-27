@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Structure for a doubly linked list node
+struct Node {
+    int num;
+    struct Node *pre;
+    struct Node *next;
+};
+
+Node *head=NULL , *last=NULL;
+
+// Function prototypes
+void addList(int n);
+void printList();
+
+int main() {
+    int n;
+
+    printf(" Input the number of nodes : ");
+    scanf("%d", &n);
+
+    addList(n); 
+    printList();
+    return 0;
+}
+
+// Function to create a doubly linked list
+void addList(int n) {
+    int i, num;
+    struct Node *info = NULL;
+
+    if (n >= 1) {
+        
+        if (head == NULL) {
+            printf(" Input data for node 1 : ");
+            scanf("%d", &num);
+            
+			head = new Node;
+            head->num = num;
+            head->pre = NULL;
+            head->next = NULL;
+            last = head; 
+
+            
+            for (i = 2; i <= n; i++) {
+                info = new Node;
+          
+                printf(" Input data for node %d : ", i);
+                scanf("%d", &num);
+                
+                info->num = num;
+                info->pre = last;
+                info->next = NULL;
+
+                last->next = info;
+                last = info;   
+            }
+        }
+    }
+}
+
+void printList() {
+    struct Node *temp;
+    int n = 1;
+    if (head == NULL) {
+        printf(" No data found in the List yet.");
+    } else {
+        temp = head;
+        while (temp != NULL) {
+            printf(" node %d : %d\n", n, temp->num);
+            n++;
+            temp = temp->next;
+        }
+    }
+}
