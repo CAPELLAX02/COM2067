@@ -158,4 +158,19 @@ int main(void) {
     printf("In-order Traversal after Deletion:\n");
     inOrderTraversal(root);
     printf("\n");
+
+//  EXPECTED OUTPUT OF THE PROGRAM:
+/*
+    In-order Traversal:
+    1 3 4 6 7 8 10 13 14 
+    Pre-order Traversal:
+    8 3 1 6 4 7 10 14 13 
+    Post-order Traversal:
+    1 4 7 6 3 13 14 10 8 
+    Target 6 found in the BST.
+    Deleting node with key 10...
+    In-order Traversal after Deletion:
+    1 3 4 6 7 8 13 14 
+*/
+
 }
