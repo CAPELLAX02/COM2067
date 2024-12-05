@@ -1,0 +1,23 @@
+celal 112
+hale 456
+zehra 234
+mehmet 122
+semih 435
+remzi 333
+rana 111
+baran 134
+berna 267
+dursun 777
+derda 789
+berke 665
+sadi 223
+selen 237
+berkay 899
+sencer 488
+sena 532
+veysel 598
+zeynep 115
+-1
+s
+se
+sev
