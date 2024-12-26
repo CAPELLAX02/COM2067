@@ -54,19 +54,22 @@ int main(void) {
 
     puts("In-order Traversal of the Tree:");
     inOrderTraversal(root);
-    // OUTPUT:
+    // OUTPUT: In-order Traversal of the Tree:
+    //         4 2 5 1 6 3 7 
 
     puts(""); 
 
     puts("Pre-order Traversal of the Tree:");
     preOrderTraversal(root);
-    // OUTPUT: 
+    // OUTPUT: Pre-order Traversal of the Tree:
+    //         1 2 4 5 3 6 7 
 
     puts("");
 
     puts("Post-order Traversal of the Tree:");
     postOrderTraversal(root);
-    // OUTPUT:
+    // OUTPUT: Post-order Traversal of the Tree:
+    //         4 5 2 6 7 3 1 
 
     puts("");
 }
